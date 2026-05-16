@@ -105,5 +105,21 @@ document.querySelectorAll('.js-delete-link').forEach((link)=>{
 
   const container = document.querySelector(`.js-cart-item-container-${productId}`);
   container.remove();
+  updateCartQuantity();
   });
 });
+
+
+function updateCartQuantity(){
+let checkoutValue = 0;
+
+cart.forEach((cartItem)=>{
+  checkoutValue += cartItem.quantity;
+});
+
+document.querySelector('.js-checkout-header-middle-section').innerHTML=`<div class="checkout-header-middle-section js-checkout-header-middle-section">
+          Checkout (<a class="return-to-home-link"
+            href="amazon.html">${checkoutValue} items</a>)
+        </div>`;
+}
+updateCartQuantity();
