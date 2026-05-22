@@ -13,6 +13,8 @@ import { deliveryOptions } from "../data/deliveryOption.js";
 
 hello();
 
+function renderOrderSummary(){
+
 const today = dayjs();
 const deliveryDate = today.add(7, "days"); // it took two parameters first the number of days and another duration like day, month or year
 console.log(deliveryDate.format("dddd, MMMM D"));
@@ -169,6 +171,7 @@ document.querySelectorAll(".js-update-link").forEach((link) => {
       `.js-cart-item-container-${productId}`,
     );
     container.classList.add("is-editing-quantity");
+    
   });
 });
 
@@ -191,6 +194,7 @@ document.querySelectorAll(".js-save-link").forEach((link) => {
     container.classList.remove("is-editing-quantity");
 
     updateCartQuantity();
+    renderOrderSummary();
   });
 });
 
@@ -202,5 +206,10 @@ document.querySelectorAll('.js-delivery-option')
       //const deliveryOptionId = element.dataset.deliveryOptionId; shorter versiion of this 
       const {productId , deliveryOptionId} = element.dataset;
       updateDeliveryOption(productId, deliveryOptionId);
+      renderOrderSummary();
     });
   });
+
+}
+
+renderOrderSummary();
