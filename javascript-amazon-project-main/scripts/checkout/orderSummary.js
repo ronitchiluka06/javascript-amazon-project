@@ -13,6 +13,7 @@ import { deliveryOptions , getDeliveryOption } from "../../data/deliveryOption.j
 import { renderPaymentSummary } from './paymentSummary.js';
 
 
+export function renderOrderSummary(){
 
 let cartSummaryHTML = "";
 
