@@ -1,16 +1,16 @@
 class Cart { // class is basically an object generator
     cartItems;  // remove undefined and only keep semi colon;
-    localStorageKey;
+    #localStorageKey; // localStorageKey is not meant to be used ouside the class , so make it private by adding an '#' symbol.
 
     constructor(localStorageKey){
-        this.localStorageKey = localStorageKey;
+        this.#localStorageKey = localStorageKey;
 
-        this.loadFromStorage();
+        this.#loadFromStorage();
     }
 
-    loadFromStorage(){
+    #loadFromStorage(){
             
-        this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey));
+        this.cartItems = JSON.parse(localStorage.getItem(this.#localStorageKey));
 
             if(!this.cartItems){
             this.cartItems = [{
@@ -27,7 +27,7 @@ class Cart { // class is basically an object generator
     }
 
     saveToStorage(){
-    localStorage.setItem(this.localStorageKey,JSON.stringify(this.cartItems));
+    localStorage.setItem(this.#localStorageKey,JSON.stringify(this.cartItems));
     
     }
 
