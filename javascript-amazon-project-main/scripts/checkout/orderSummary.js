@@ -21,11 +21,7 @@ let cartSummaryHTML = "";
 cart.forEach((cartItem) => {
   const productId = cartItem.productId;
 
-  console.log('Product ID from cart:', productId);
-
   const matchingProduct = getProduct(productId);
-
-  console.log('Matching Product:', matchingProduct);
 
   const deliveryOptionId = cartItem.deliveryOptionId;
 
