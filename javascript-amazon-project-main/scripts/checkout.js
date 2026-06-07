@@ -7,7 +7,25 @@ import {loadProducts, loadProductsFetch} from '../data/products.js';
 import {loadCart} from '../data/cart.js';
 
 
+async function loadPage(){   //async = make function return a promise
 
+    await loadProductsFetch();
+
+    const value = await new Promise((resolve)=>{
+    loadCart(()=>{
+        resolve('value3');
+        });
+    });
+
+    renderOrderSummary();
+    renderPaymentSummary();
+
+}
+loadPage();
+
+
+
+/*
 Promise.all([
     loadProductsFetch(),
     new Promise((resolve)=>{
@@ -21,6 +39,8 @@ Promise.all([
     renderOrderSummary();
     renderPaymentSummary();
 });
+*/
+
 
 /*
 new Promise((resolve)=>{          // promise lets us control asynchronous code and resolve() lets us control when to go the next step 
