@@ -9,13 +9,23 @@ import {loadCart} from '../data/cart.js';
 
 async function loadPage(){   //async = make function return a promise
 
-    await loadProductsFetch();
+    try{
+        //throw 'error1'; throw lets us create our own error.
 
-    const value = await new Promise((resolve)=>{
-    loadCart(()=>{
-        resolve('value3');
+        await loadProductsFetch();
+
+        const value = await new Promise((resolve ,reject)=>{ // reject() is a function and it lets us create an error in future
+            //throw 'error2';
+        loadCart(()=>{
+            //reject('error3');
+            resolve('value3');
+            });
         });
-    });
+    } catch(error){
+        console.log('Unexpected error. Please try again later.');
+    }
+
+    
 
     renderOrderSummary();
     renderPaymentSummary();
